@@ -19,3 +19,7 @@
 
 1. ReplayWidgetObject：回放界面
 2. ExitOpenLevelObject：退出回放打开的关卡
+
+***
+# 分割线
+(https://github.com/UR-l/ReplaySystem/blob/main/images/WeChatPay.jpg)(https://github.com/UR-l/ReplaySystem/blob/main/images/AliPay.jpg)
