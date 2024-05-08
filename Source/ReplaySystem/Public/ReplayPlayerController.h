@@ -1,15 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-/*************************************************
-// File name: ReplayPlayerController.h
-// Author: LF
-// Version: 1.0
-// Date: 2024/04/29 16:49:49
-// Description:	ReplayPlayerController
-// Others:
-// History:
-*************************************************/
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -31,7 +21,7 @@ protected:
 
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Replays")
-	TSubclassOf<class UReplayWidget> ReplayWidgetObject;
+	TSubclassOf<class UReplayControlWidget> ReplayControlWidgetObject;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Replays")
 	TSoftObjectPtr<class UWorld> ExitOpenLevelObject;
@@ -63,7 +53,7 @@ public:
 private:
 	int32 PreviousAASetting;
 	int32 PreviousMBSetting;
-	class UReplayWidget* ReplayWidgetPtr;
+	class UReplayControlWidget* ReplayWidgetPtr;
 	class UDemoNetDriver* DemoNetDriverPtr;
 
 

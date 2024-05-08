@@ -1,15 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-/*************************************************
-// File name: ReplayGameInstance.h
-// Author: LF
-// Version: 1.0
-// Date: 2024/04/29 16:50:04
-// Description: ReplayGameInstance
-// Others:
-// History:
-*************************************************/
-
 #pragma once
 
 #include "CoreMinimal.h"

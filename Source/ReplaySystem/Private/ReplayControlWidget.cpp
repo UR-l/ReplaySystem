@@ -1,19 +1,21 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
+// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "ReplayWidget.h"
+#include "ReplayControlWidget.h"
+
+
 #include "Kismet/KismetTextLibrary.h"
 #include "Components/Slider.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
 #include "Components/ComboBoxString.h"
 
-void UReplayWidget::NativeConstruct()
+void UReplayControlWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-	QuitButton->OnClicked.AddDynamic(this, &UReplayWidget::OnQuitButtonClicked);
-	PauseButton->OnClicked.AddDynamic(this, &UReplayWidget::OnPauseButtonClicked);
-	RestartPlayButton->OnClicked.AddDynamic(this, &UReplayWidget::OnRestartPlayButtonClicked);
+	QuitButton->OnClicked.AddDynamic(this, &UReplayControlWidget::OnQuitButtonClicked);
+	PauseButton->OnClicked.AddDynamic(this, &UReplayControlWidget::OnPauseButtonClicked);
+	RestartPlayButton->OnClicked.AddDynamic(this, &UReplayControlWidget::OnRestartPlayButtonClicked);
 
 	FScriptDelegate OnSliderCaptureBeginDelegate;
 	OnSliderCaptureBeginDelegate.BindUFunction(this, TEXT("OnSliderCaptureBegin"));
@@ -38,23 +40,23 @@ void UReplayWidget::NativeConstruct()
 	ReplayPlayRateComBox->OnSelectionChanged.Add(OnSelectionChangedDelegate);
 }
 
-void UReplayWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
+void UReplayControlWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
 }
 
-void UReplayWidget::NativeDestruct()
+void UReplayControlWidget::NativeDestruct()
 {
 	Super::NativeDestruct();
 }
 
-void UReplayWidget::SetProgressMaxValue(float MaxValue)
+void UReplayControlWidget::SetProgressMaxValue(float MaxValue)
 {
 	ProgressSlider->SetMaxValue(MaxValue);
 	TotalTimeText->SetText(UKismetTextLibrary::Conv_StringToText(FString::SanitizeFloat((int)(MaxValue * 100) / 100.0) + "s"));
 }
 
-void UReplayWidget::UpdateCurentTime(float CurrentTime)
+void UReplayControlWidget::UpdateCurentTime(float CurrentTime)
 {
 	CurrentTimeText->SetText(UKismetTextLibrary::Conv_StringToText(FString::SanitizeFloat((int)(CurrentTime * 100) / 100.0) + "s"));
 	if (!bSliderCapture)
@@ -63,32 +65,32 @@ void UReplayWidget::UpdateCurentTime(float CurrentTime)
 	}
 }
 
-void UReplayWidget::OnQuitButtonClicked()
+void UReplayControlWidget::OnQuitButtonClicked()
 {
 	OnQuitReplatEvent.ExecuteIfBound();
 }
 
-void UReplayWidget::OnPauseButtonClicked()
+void UReplayControlWidget::OnPauseButtonClicked()
 {
 	bPauseReplay = OnReplayStateEvent.Execute(!bPauseReplay);
 }
 
-void UReplayWidget::OnRestartPlayButtonClicked()
+void UReplayControlWidget::OnRestartPlayButtonClicked()
 {
 	RestartPlayButtonEvent.ExecuteIfBound();
 }
 
-void UReplayWidget::OnReplayPlayRateComBoxChanged()
+void UReplayControlWidget::OnReplayPlayRateComBoxChanged()
 {
 	OnReplayPlayRateEvent.ExecuteIfBound(FCString::Atof(*ReplayPlayRateComBox->GetSelectedOption()));
 }
 
-void UReplayWidget::OnSliderCaptureBegin()
+void UReplayControlWidget::OnSliderCaptureBegin()
 {
 	bSliderCapture = true;
 }
 
-void UReplayWidget::OnSliderCaptureEnd()
+void UReplayControlWidget::OnSliderCaptureEnd()
 {
 	OnGotoTimeInSecondsEvent.ExecuteIfBound(ProgressSlider->GetValue());
 	bSliderCapture = false;

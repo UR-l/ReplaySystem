@@ -1,21 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-/*************************************************
-// File name: ReplayWidget.h
-// Author: LF
-// Version: 1.0
-// Date: 2024/04/29 16:49:14
-// Description: Replay Widget
-// Others:
-// History:
-*************************************************/
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "ReplayWidget.generated.h"
-
+#include "ReplayControlWidget.generated.h"
 
 DECLARE_DELEGATE(FOnRestartReplatEvent);
 DECLARE_DELEGATE(FOnQuitReplatEvent);
@@ -27,7 +16,7 @@ DECLARE_DELEGATE_OneParam(FOnReplayPlayRateEvent, float);
  * 
  */
 UCLASS()
-class REPLAYSYSTEM_API UReplayWidget : public UUserWidget
+class REPLAYSYSTEM_API UReplayControlWidget : public UUserWidget
 {
 	GENERATED_BODY()
 

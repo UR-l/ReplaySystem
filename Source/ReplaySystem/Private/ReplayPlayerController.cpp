@@ -4,7 +4,7 @@
 #include "ReplayPlayerController.h"
 #include "Engine/DemoNetDriver.h"
 #include "Kismet/GameplayStatics.h"
-#include "ReplayWidget.h"
+#include "ReplayControlWidget.h"
 #include "Blueprint/UserWidget.h"
 
 void AReplayPlayerController::BeginPlay()
@@ -13,10 +13,10 @@ void AReplayPlayerController::BeginPlay()
 	ReplayWidgetPtr = nullptr;
 	DemoNetDriverPtr = nullptr;
 	FindDemoNetDriver();
-	if (DemoNetDriverPtr->IsPlaying() && ReplayWidgetObject.Get())
+	if (DemoNetDriverPtr->IsPlaying() && ReplayControlWidgetObject.Get())
 	{
 		SetShowMouseCursor(true);
-		ReplayWidgetPtr = CreateWidget<UReplayWidget>(GetWorld(), ReplayWidgetObject);
+		ReplayWidgetPtr = CreateWidget<UReplayControlWidget>(GetWorld(), ReplayControlWidgetObject);
 		ReplayWidgetPtr->SetProgressMaxValue(GetReplayTotalTime());
 		ReplayWidgetPtr->AddToViewport();
 
