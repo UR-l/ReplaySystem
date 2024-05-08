@@ -6,6 +6,7 @@
 #include "Components/Button.h"
 #include "ReplaySystemTypes.h"
 #include "Components/ListView.h"
+#include "HAL/PlatformFileManager.h"
 
 #include "ReplayGameInstance.h"
 

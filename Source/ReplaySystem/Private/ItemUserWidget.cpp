@@ -12,8 +12,6 @@ void UItemUserWidget::NativeOnListItemObjectSet(UObject* ListItemObject)
 
 	UItemData* ItemData = Cast<UItemData>(ListItemObject);
 
-	ItemData->ReplayName;
-
 	BgImage->SetVisibility(ESlateVisibility::Collapsed);
 	NameTextBlock->SetText(FText::FromString(ItemData->ReplayName));
 }

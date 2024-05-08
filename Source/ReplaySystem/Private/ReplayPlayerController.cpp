@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "ReplayControlWidget.h"
 #include "Blueprint/UserWidget.h"
+#include "GameFramework/WorldSettings.h"
 
 void AReplayPlayerController::BeginPlay()
 {

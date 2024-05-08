@@ -15,15 +15,15 @@ class REPLAYSYSTEM_API UReplayGameInstance : public UGameInstance
 	GENERATED_BODY()
 
 public:
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ReplayGameInstance")
 	FString RecordingName = TEXT("Replay");
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ReplayGameInstance")
 	FString FriendlyRecordingName = TEXT("FriendlyReplay");
 	
-	UFUNCTION(BlueprintCallable, Category = "Replays")
+	UFUNCTION(BlueprintCallable, Category = "ReplayGameInstance")
 	void StartRecoring(const FString& ReplayName, const FString& FriendlyReplayName);
-	UFUNCTION(BlueprintCallable, Category = "Replays")
+	UFUNCTION(BlueprintCallable, Category = "ReplayGameInstance")
 	void StopRecoding();
-	UFUNCTION(BlueprintCallable, Category = "Replays")
+	UFUNCTION(BlueprintCallable, Category = "ReplayGameInstance")
 	void StartReplay(const FString& ReplayName);
 };
